@@ -31,7 +31,7 @@ where **M<sub>avg</sub>**  is the mean atomic mass (in amu), **&#920;<sub>D</sub
 
 &#920;<sub>D</sub> = h/k<sub>B</sub> (3n/(4&#960;&#937;))<sup>1/3</sup>v<sub>a</sub>,  
 
-where **h** and **k_<sub>B</sub>** are Planck and Boltzmann constants, respectively, **n** is the number of atoms in the unit cell, **&#937;** is the cell volume, and **v<sub>a</sub>** is the average sound wave velocity. The **v<sub>a</sub>**  is given in terms of **v<sub>l</sub>** and **v<sub>t</sub>** as
+where **h** and **k<sub>B</sub>** are Planck and Boltzmann constants, respectively, **n** is the number of atoms in the unit cell, **&#937;** is the cell volume, and **v<sub>a</sub>** is the average sound wave velocity. The **v<sub>a</sub>**  is given in terms of **v<sub>l</sub>** and **v<sub>t</sub>** as
 
 v<sub>a</sub> = [(1/3)(1/v<sub>l</sub><sup>3</sup>+2/v<sub>t</sub><sup>3</sup>)]<sup>-1/3</sup>.  
 
@@ -53,4 +53,3 @@ which takes into account the contribution of acoustic sound velocities only.
 7. P. Debye, Zur theorie der spezifischen w&#228;rmen,  *Annalen der Physik* **344**, 789–839 (1912). DOI: [10.1002/andp.19123441404](https://doi.org/10.1002/andp.19123441404).
 8. V. N. Belomestnykh, The acoustical Gr&#252;neisen constants of solids, *Tech. Phys. Lett.* **30**,
    91–93 (2004). DOI: [10.1134/1.1666949](https://doi.org/10.1134/1.1666949).
-
