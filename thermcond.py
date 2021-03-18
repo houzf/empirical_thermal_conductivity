@@ -78,9 +78,9 @@ def thermal_cond_cahill(natoms_list, atomic_weight_list, vol, K, G):
 
 def thermal_cond_latt_mixed(natoms_list, atomic_weight_list, vol, K):
     #Boltzmann constant (J/K = W*s/K)
-    #kb = 1.3806485279e-23
+    kb = 1.3806485279e-23
     #Avogadro's number
-    #NA = 6.02214085774e+23
+    NA = 6.02214085774e+23
     ang2m = 1.0e-10
     # 1GPa = 10^9 N/m^2 = 10^9 kg/(m*s^2).
     GPa2SI = 1.0e9
@@ -95,9 +95,9 @@ def thermal_cond_latt_mixed(natoms_list, atomic_weight_list, vol, K):
     mean_mass = mass_in_kg/float(natoms)
     print(mean_mass)
     vol = vol*ang2m**3
-    print('vol:{:12.5f}'.format(vol))
+    print('vol:{:12.5e}'.format(vol))
     mean_vol = vol/float(natoms)
-    print('mean_vol:{:12.5f}'.format(mean_vol))
+    print('mean_vol:{:12.5e}'.format(mean_vol))
     print(a1, mean_vol, mean_vol**(2.0/3.0), natoms**(1.0/3.0))
     kappa_ac = a1*mean_mass*v_s**3/(mean_vol**(2.0/3.0)*natoms**(1.0/3.0))
     kappa_op = a2*v_s*mean_vol**(-2.0/3.0)*(1.0-float(natoms)**(-2.0/3.0))
