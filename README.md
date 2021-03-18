@@ -5,7 +5,7 @@ Estimate the thermal conductivity using empirical models including the Clarke’
 
 * Clarke model
 
-&#954; = 0.85 * k<sub>b</sub>(N<sub>A</sub>*N<sub>a</sub> * &#961; /W)<sup>(2.0/3.0)</sup>  v<sub>s</sub>
+&#954;<sub>min</sub> = 0.85 * k<sub>B</sub>(N<sub>A</sub>*n* &#961; /W)<sup>(2/3)</sup>  (E/&#961;)<sub>s</sub>
 
 * Cahill model
 
