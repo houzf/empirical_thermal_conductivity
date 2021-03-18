@@ -1,5 +1,5 @@
 # Empirical estimation of thermal conductivity
-Estimate the thermal conductivity using empirical models including the Clarke’s, Cahill’s, and  Slack's models.
+Estimate the thermal conductivity using empirical models including the Clarke’s, Cahill–Pohl’s, and  Slack's models.
 
 # The basic equations
 
@@ -9,7 +9,7 @@ Estimate the thermal conductivity using empirical models including the Clarke’
 
 where **k<sub>B</sub>** is Boltzmann constant,  **M<sub>avg</sub>** and **n** are the mean atomic mass and the number of the atoms in the unit cell, respectively, **E** is Young’s modulus, **&#961;** is the density and **N<sub>A</sub>** is Avogadro’s number.
 
-* Cahill model
+* Cahill–Pohl model
 
 &#954;<sub>min</sub>  =  k<sub>B</sub>/2.48 (n/&#937;)<sup>2/3</sup>  (v<sub>l</sub>+2v<sub>t</sub>),              
 
@@ -42,5 +42,13 @@ The Gr&#252;neisen parameter **&#947;**  is calculated from the relation propose
 which takes into account the contribution of acoustic sound velocities only.
 
 # References
-- a
-- b
+
+1. D. R. Clarke, Materials selection guidelines for low thermal conductivity thermal barrier coatings, *Surf. Coat. Technol.* **163–164**, 67–74(2003). DOI: [10.1016/S0257-8972(02)00593-5](https://doi.org/10.1016/S0257-8972(02)00593-5).
+2. A. M. Limarga, S. Shian, R. M. Leckie, C. G. Levi, and D. R. Clarke, Thermal conductivity of single- and multi-phase compositions in the ZrO<sub>2</sub>–Y<sub>2</sub>O<sub>3</sub>–Ta<sub>2</sub>O<sub>5</sub> system, *J. Eur. Ceram. Soc.*, **34**, 3085-3094(2014). DOI: [10.1016/j.jeurceramsoc.2014.03.013](https://doi.org/10.1016/j.jeurceramsoc.2014.03.013).
+3. D. G. Cahill, S. K. Watson, and R. O. Pohl, Lower limit to the thermal conductivity of disordered crystals, *Phys. Rev. B* **46**, 6131(1992). DOI: [10.1103/PhysRevB.46.6131](https://doi.org/10.1103/PhysRevB.46.6131).
+4. G. A. Slack, Nonmetallic crystals with high thermal conductivity, *J. Phys. Chem. Solids*
+   **34**, 321–335 (1973). DOI: [10.1016/0022-3697(73)90092-9](https://doi.org/10.1016/0022-3697(73)90092-9).
+5. P. Debye, Zur theorie der spezifischen w&#228;rmen,  *Annalen der Physik* **344**, 789–839 (1912). DOI: [10.1002/andp.19123441404](https://doi.org/10.1002/andp.19123441404).
+6. V. N. Belomestnykh, The acoustical Gr&#252;neisen constants of solids, *Tech. Phys. Lett.* **30**,
+   91–93 (2004). DOI: [10.1134/1.1666949](https://doi.org/10.1134/1.1666949).
+
