@@ -40,3 +40,7 @@ The Gr&#252;neisen parameter **&#947;**  is calculated from the relation propose
 &#947; = [9-12(v<sub>t</sub>/v<sub>l</sub>)<sup>2</sup>]/[2+4(v<sub>t</sub>/v<sub>l</sub>)<sup>2</sup>],  
 
 which takes into account the contribution of acoustic sound velocities only.
+
+# References
+- a
+- b
