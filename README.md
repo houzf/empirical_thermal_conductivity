@@ -41,6 +41,43 @@ The Gr&#252;neisen parameter **&#947;**  is calculated from the relation propose
 
 which takes into account the contribution of acoustic sound velocities only.
 
+# Usage
+
+## Input parameters
+
+1. natoms_list:  number of atoms for each species in the primitive unit cell. For example, Al<sub>2</sub>Fe<sub>3</sub>Si<sub>3</sub> in the primitive unit cell of its triclinic structure, the number of  Fe, Al, and Si are 6, 4, and 6, respectively. So  define:   natoms_list = [6, 4, 6].
+2. atomic_weight_list: the atomic weight (in amu) for each atom species. For example:  the atomic weights of Fe, Al, and Si are 55.845, 26.982, and 28.086, respectively. So define:  atomic_weight_list = [55.845, 26.982, 28.086].
+3. vol: the volume of primitive unit cell (in in &#197;<sup>3</sup>).  For example, the volume of the primitive unit cell of   Al<sub>2</sub>Fe<sub>3</sub>Si<sub>3</sub>  is  196.489731295 &#197;<sup>3</sup>. So define: vol = 196.489731295.
+4. K: bulk modulus (in GPa).  For example, K = 173.121
+5. G: shear modulus (in GPa). For example, G = 173.121
+6. E: Young's modulus (in GPa). For example,  E= 286.239.
+7. t: temperature (in K). t= 679.334852747
+
+## Call function
+
+- kappa_Clarke=thermal_cond_clarke(natoms_list, atomic_weight_list, vol, E)
+
+- kappa_Chill=thermal_cond_cahill(natoms_list, atomic_weight_list, vol, K, G)
+
+- kappa_Slack=thermal_cond_slack(natoms_list, atomic_weight_list, vol, K, G, t)
+
+- kappa_mixed=thermal_cond_latt_mixed(natoms_list, atomic_weight_list, vol, K)
+
+print(kappa_Clarke)
+
+print(kappa_Chill)
+
+print(kappa_Slack)
+
+print(kappa_mixed)
+
+All the calculated thermal conductivities are given in the unit of W m<sup>-1</sup>K<sup>-1</sup>.  Meanwhile, the other physics quantities such as Debye temperature, Gr&#252;neisen parameter, and sound velocities are also printed out. 
+
+We have used the Slack model to estimate of Al<sub>2</sub>Fe<sub>3</sub>Si<sub>3</sub>. If you are interested in it, please refer to our paper:
+
+1. Zhufeng Hou, Yoshiki Takagiwa, Yoshikazu Shinohara, Yibin Xu, and Koji Tsuda, Machine-learning-assisted development and theoretical consideration for the Al<sub>2</sub>Fe<sub>3</sub>Si<sub>3</sub>  thermoelectric material, *ACS Appl. Mater. Interfaces* **11**, 11545–11554(2019). DOI: [10.1021/acsami.9b02381](https://doi.org/10.1021/acsami.9b02381).
+
+
 # References
 
 1. D. R. Clarke, Materials selection guidelines for low thermal conductivity thermal barrier coatings, *Surf. Coat. Technol.* **163–164**, 67–74(2003). DOI: [10.1016/S0257-8972(02)00593-5](https://doi.org/10.1016/S0257-8972(02)00593-5).
