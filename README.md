@@ -4,6 +4,7 @@ Estimate the thermal conductivity using empirical models including the Clarke’
 # The basic equations
 
 * Clarke model
+&#954
 
 * Cahill model
 
