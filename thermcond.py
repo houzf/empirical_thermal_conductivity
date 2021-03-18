@@ -208,6 +208,7 @@ if __name__ == "__main__":
     print('Slack model:')
     print(thermal_cond_slack(a, am, vol, K, G, T))
 
+    """
     print('experiment: x=0\n')
     print('Clarke model:')
     print(thermal_cond_clarke(a, am, vol, E))
@@ -220,6 +221,7 @@ if __name__ == "__main__":
     print('\n')
     print('Slack model:')
     print(thermal_cond_slack(a, am, vol, K, G, T))
+    """
 
     bka=[1, 1, 3]
     bkm=[39.098, 180.948, 15.999]
