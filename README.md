@@ -5,7 +5,7 @@ Estimate the thermal conductivity using empirical models including the Clarke’
 
 * Clarke model<sup>[1](https://doi.org/10.1016/S0257-8972(02)00593-5),[2](https://doi.org/10.1016/j.jeurceramsoc.2014.03.013)</sup>
 
-&#954;<sub>min</sub>  = 0.85  k<sub>B</sub>(N<sub>A</sub> n &#961; /M<sub>avg</sub>)<sup>2/3</sup>  (E/&#961;)<sup>1/2</sup>,  
+&#954;<sub>min</sub>  = 0.87  k<sub>B</sub>(N<sub>A</sub> n &#961; /M<sub>avg</sub>)<sup>2/3</sup>  (E/&#961;)<sup>1/2</sup>,  
 
 where **k<sub>B</sub>** is Boltzmann constant,  **M<sub>avg</sub>** and **n** are the mean atomic mass and the number of the atoms in the unit cell, respectively, **E** is Young’s modulus, **&#961;** is the density and **N<sub>A</sub>** is Avogadro’s number.
 
