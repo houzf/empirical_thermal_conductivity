@@ -17,7 +17,7 @@ where **k<sub>B</sub>** is Boltzmann constant,  **M** and **m** are the molecula
 
 **&#937;<sub>avg</sub>** is the average volume per atom. 
 
-The Eq.(3) in Ref. [3](https://doi.org/10.1016/j.jeurceramsoc.2014.03.013) has messed the definition of **M** and **M**<sub>avg</sub>, and the correct way is to use M, rather the **M<sub>avg</sub>** (the mean atomic mass).
+The Eq.(3) in Ref. [3](https://doi.org/10.1016/j.jeurceramsoc.2014.03.013) had messed the definition of **M** and **M**<sub>avg</sub>, and the correct way is to use M, rather the **M<sub>avg</sub>** (the mean atomic mass).
 
 * Cahill–Pohl model<sup>[4](https://doi.org/10.1146/annurev.pc.39.100188.000521),[5](https://doi.org/10.1063/1.4832615),[6](https://doi.org/10.1103/PhysRevB.46.6131)</sup>
 
