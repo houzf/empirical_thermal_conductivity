@@ -57,7 +57,7 @@ def thermal_cond_clarke(natoms_list, atomic_weight_list, vol, E):
     # in unit of W/(m.K)
     return kappa_clarke
 
-def thermal_cond_cahil(natoms_list, atomic_weight_list, vol, K, G):
+def thermal_cond_cahill(natoms_list, atomic_weight_list, vol, K, G):
     # volume in unit of angstrom^{-3}.
     #Boltzmann constant (J/K = W*s/K)
     kb = 1.3806485279e-23
@@ -72,9 +72,9 @@ def thermal_cond_cahil(natoms_list, atomic_weight_list, vol, K, G):
     n = float(natoms)/(vol*1.0e-30)
     print('Longitudinal sound velocity estimated from bulk and shear moduli [m/s]:{:12.5f}'.format(v_l))
     print('Transverse sound velocity estimated from shear modulus [m/s]:{:12.5f}'.format(v_t))
-    #kappa_cahil = 1.0/2.48 * kb *n**(2.0/3.0)*(v_l+v_t)
-    kappa_cahil = 0.5*(np.pi/6.0)**(1.0/3.0)*kb*n**(2.0/3.0)*(v_l+v_t)
-    return kappa_cahil
+    #kappa_cahill = 1.0/2.48 * kb *n**(2.0/3.0)*(v_l+v_t)
+    kappa_cahill = 0.5*(np.pi/6.0)**(1.0/3.0)*kb*n**(2.0/3.0)*(v_l+v_t)
+    return kappa_cahill
 
 def thermal_cond_latt_mixed(natoms_list, atomic_weight_list, vol, K):
     #Boltzmann constant (J/K = W*s/K)
@@ -200,7 +200,7 @@ if __name__ == "__main__":
     print(thermal_cond_clarke(a, am, vol, E))
     print('\n')
     print('Cahil model')
-    print(thermal_cond_cahil(a, am, vol, K, G))
+    print(thermal_cond_cahill(a, am, vol, K, G))
     print('\n')
     print('Mixed model')
     print(thermal_cond_latt_mixed(a, am, vol,  K))
@@ -213,7 +213,7 @@ if __name__ == "__main__":
     print(thermal_cond_clarke(a, am, vol, E))
     print('\n')
     print('Cahil model')
-    print(thermal_cond_cahil(a, am, vol, K, G))
+    print(thermal_cond_cahill(a, am, vol, K, G))
     print('\n')
     print('Mixed model')
     print(thermal_cond_latt_mixed(a, am, vol,  K))
@@ -248,7 +248,7 @@ if __name__ == "__main__":
     print('Clarke model:')
     print(thermal_cond_clarke(ccu, cmcu, vcu, Ecu))
     print('Cahil model')
-    print thermal_cond_cahil(ccu,cmcu, vcu, Kcu, Gcu)
+    print thermal_cond_cahill(ccu,cmcu, vcu, Kcu, Gcu)
     print('mixed model')
     print(thermal_cond_latt_mixed(ccu, cmcu, vcu,  Kcu))
     #print(mass(ccu,cmcu))
