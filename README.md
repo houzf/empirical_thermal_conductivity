@@ -3,7 +3,7 @@ Estimate the thermal conductivity using empirical models including the Clarke’
 
 # The basic equations
 
-* Clarke model
+* Clarke model<sup>[1](https://doi.org/10.1016/S0257-8972(02)00593-5)</sup>
 
 &#954;<sub>min</sub>  = 0.85  k<sub>B</sub>(N<sub>A</sub> n &#961; /M<sub>avg</sub>)<sup>2/3</sup>  (E/&#961;)<sup>1/2</sup>,  
 
