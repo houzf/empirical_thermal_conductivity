@@ -3,13 +3,23 @@ Estimate the thermal conductivity using empirical models including the Clarke’
 
 # The basic equations
 
-* Clarke model<sup>[1](https://doi.org/10.1016/S0257-8972(02)00593-5),[2](https://doi.org/10.1016/j.jeurceramsoc.2014.03.013)</sup>
+* Clarke model<sup>[1](https://doi.org/10.1016/S0257-8972(02)00593-5),[2](http://dx.doi.org/10.1016/S1369-7021(05)70934-2),[3](https://doi.org/10.1016/j.jeurceramsoc.2014.03.013)</sup>
 
-&#954;<sub>min</sub>  = 0.87  k<sub>B</sub>(N<sub>A</sub> n &#961; /M<sub>avg</sub>)<sup>2/3</sup>  (E/&#961;)<sup>1/2</sup>,  
+&#954;<sub>min</sub>  = 0.87  k<sub>B</sub>(N<sub>A</sub> m &#961; /M)<sup>2/3</sup>  (E/&#961;)<sup>1/2</sup>,  
 
-where **k<sub>B</sub>** is Boltzmann constant,  **M<sub>avg</sub>** and **n** are the mean atomic mass and the number of the atoms in the unit cell, respectively, **E** is Young’s modulus, **&#961;** is the density and **N<sub>A</sub>** is Avogadro’s number.
+or 
 
-* Cahill–Pohl model<sup>[3](https://doi.org/10.1146/annurev.pc.39.100188.000521),[4](https://doi.org/10.1063/1.4832615),[5](https://doi.org/10.1103/PhysRevB.46.6131)</sup>
+&#954;<sub>min</sub>  = 0.87  k<sub>B</sub>(&#937;<sub>avg</sub>)<sup>-2/3</sup>  (E/&#961;)<sup>1/2</sup>,  
+
+where **k<sub>B</sub>** is Boltzmann constant,  **M** and **m** are the molecular mass and the number of the atoms per molecule, respectively, **E** is Young’s modulus, **&#961;** is the density and **N<sub>A</sub>** is Avogadro’s number.
+
+&#937;<sub>avg</sub> = M/(m&#961;N<sub>A</sub>) ,
+
+**&#937;<sub>avg</sub>** is the average volume per atom. 
+
+The Eq.(3) in Ref. [3](https://doi.org/10.1016/j.jeurceramsoc.2014.03.013) has messed the definition of **M** and **M**<sub>avg</sub>, and the correct way is to use M, rather the **M<sub>avg</sub>** (the mean atomic mass).
+
+* Cahill–Pohl model<sup>[4](https://doi.org/10.1146/annurev.pc.39.100188.000521),[5](https://doi.org/10.1063/1.4832615),[6](https://doi.org/10.1103/PhysRevB.46.6131)</sup>
 
 &#954;<sub>min</sub>  =  k<sub>B</sub>/2.48 (n/&#937;)<sup>2/3</sup>  (v<sub>l</sub>+2v<sub>t</sub>),              
 
@@ -23,11 +33,11 @@ v<sub>l</sub>= ((B+4G/3)/&#961;)<sup>1/2</sup>,
 
 v<sub>t</sub>=(G/&#961;)<sup>1/2</sup>.                 
 
-* Slack model<sup>[6](https://doi.org/10.1016/0022-3697(73)90092-9)</sup>
+* Slack model<sup>[7](https://doi.org/10.1016/0022-3697(73)90092-9)</sup>
 
 &#954; = 3.1 &#8727; 10<sup>-6</sup> M<sub>avg</sub> &#920;<sub>D</sub><sup>3</sup>&#948; /(&#947;<sup>2</sup>n<sup>2/3</sup>T), 
 
-where **M<sub>avg</sub>**  is the mean atomic mass (in amu), **&#920;<sub>D</sub>**  is the Debye temperature (in K), **n** and the number of the atoms in the unit cell, **&#948;<sup>3</sup>** is the volume per atom (in &#197;<sup>3</sup>), and **&#947;** is the average Gr&#252;neisen parameter. The Debye temperature<sup>[7](https://doi.org/10.1002/andp.19123441404)</sup> and Gr&#252;neisen parameter can be evaluated from the sound velocities, which can be measured experimentally, or can be obtained by the theoretically-calculated elastic modulus.
+where **M<sub>avg</sub>**  is the mean atomic mass (in amu), **&#920;<sub>D</sub>**  is the Debye temperature (in K), **n** and the number of the atoms in the unit cell, **&#948;<sup>3</sup>** is the volume per atom (in &#197;<sup>3</sup>), and **&#947;** is the average Gr&#252;neisen parameter. The Debye temperature<sup>[8](https://doi.org/10.1002/andp.19123441404)</sup> and Gr&#252;neisen parameter can be evaluated from the sound velocities, which can be measured experimentally, or can be obtained by the theoretically-calculated elastic modulus.
 
 &#920;<sub>D</sub> = h/k<sub>B</sub> (3n/(4&#960;&#937;))<sup>1/3</sup>v<sub>a</sub>,  
 
@@ -35,11 +45,16 @@ where **h** and **k<sub>B</sub>** are Planck and Boltzmann constants, respective
 
 v<sub>a</sub> = [(1/3)(1/v<sub>l</sub><sup>3</sup>+2/v<sub>t</sub><sup>3</sup>)]<sup>-1/3</sup>.  
 
-The Gr&#252;neisen parameter **&#947;**  is calculated from the relation proposed by Belomestnykh<sup>[8](https://doi.org/10.1134/1.1666949)</sup>:
+The Gr&#252;neisen parameter **&#947;**  is calculated from the relation proposed by Belomestnykh<sup>[9](https://doi.org/10.1134/1.1666949)</sup>:
 
 &#947; = [9-12(v<sub>t</sub>/v<sub>l</sub>)<sup>2</sup>]/[2+4(v<sub>t</sub>/v<sub>l</sub>)<sup>2</sup>],  
 
 which takes into account the contribution of acoustic sound velocities only.
+
+* Mixed model<sup>[10](http://dx.doi.org/10.1039/c1jm11754h)</sup>
+
+  &#954;<sub>a</sub> = a<sub>1</sub>  &#8727;  M
+
 
 # Usage
 
@@ -75,18 +90,21 @@ All the calculated thermal conductivities are given in the unit of W m<sup>-1</s
 
 We have used the Slack model to estimate of Al<sub>2</sub>Fe<sub>3</sub>Si<sub>3</sub>. If you are interested in it, please refer to our paper:
 
-1. Zhufeng Hou, Yoshiki Takagiwa, Yoshikazu Shinohara, Yibin Xu, and Koji Tsuda, Machine-learning-assisted development and theoretical consideration for the Al<sub>2</sub>Fe<sub>3</sub>Si<sub>3</sub>  thermoelectric material, *ACS Appl. Mater. Interfaces* **11**, 11545–11554(2019). DOI: [10.1021/acsami.9b02381](https://doi.org/10.1021/acsami.9b02381).
+- Zhufeng Hou, Yoshiki Takagiwa, Yoshikazu Shinohara, Yibin Xu, and Koji Tsuda, Machine-learning-assisted development and theoretical consideration for the Al<sub>2</sub>Fe<sub>3</sub>Si<sub>3</sub>  thermoelectric material, *ACS Appl. Mater. Interfaces* **11**, 11545–11554(2019). DOI: [10.1021/acsami.9b02381](https://doi.org/10.1021/acsami.9b02381).
+
 
 
 # References
 
 1. D. R. Clarke, Materials selection guidelines for low thermal conductivity thermal barrier coatings, *Surf. Coat. Technol.* **163–164**, 67–74(2003). DOI: [10.1016/S0257-8972(02)00593-5](https://doi.org/10.1016/S0257-8972(02)00593-5).
-2. A. M. Limarga, S. Shian, R. M. Leckie, C. G. Levi, and D. R. Clarke, Thermal conductivity of single- and multi-phase compositions in the ZrO<sub>2</sub>–Y<sub>2</sub>O<sub>3</sub>–Ta<sub>2</sub>O<sub>5</sub> system, *J. Eur. Ceram. Soc.*, **34**, 3085-3094(2014). DOI: [10.1016/j.jeurceramsoc.2014.03.013](https://doi.org/10.1016/j.jeurceramsoc.2014.03.013).
-3. D. G. Cahill and R. O. Pohl, Lattice vibrations and heat transport in crystals and glasses,  *Annu. Rev. Phys. Chem.*, **39**, 93–121(1988). DOI: [10.1146/annurev.pc.39.100188.000521](https://doi.org/10.1146/annurev.pc.39.100188.000521).
-4. D. G. Cahill, P. V. Braun, G. Chen, D. R. Clarke, S. Fan, K. E. Goodson, P. Keblinski, W. P. King, G. D. Mahan, A. Majumdar, H. J. Maris, S. R. Phillpot, E. Pop and L. Shi, *Appl. Phys. Rev.*, **1**, 011305(2014). DOI: [10.1063/1.4832615](https://doi.org/10.1063/1.4832615).
-5. D. G. Cahill, S. K. Watson, and R. O. Pohl, Lower limit to the thermal conductivity of disordered crystals, *Phys. Rev. B* **46**, 6131(1992). DOI: [10.1103/PhysRevB.46.6131](https://doi.org/10.1103/PhysRevB.46.6131).
-6. G. A. Slack, Nonmetallic crystals with high thermal conductivity, *J. Phys. Chem. Solids*
+2. D. R. Clarke and S. R. Phillpot, Thermal barrier coating materials,  Mater. Today **8**, 22–29 (2005). DOI: [10.1016/S1369-7021(05)70934-2](http://dx.doi.org/10.1016/S1369-7021(05)70934-2). 
+3. A. M. Limarga, S. Shian, R. M. Leckie, C. G. Levi, and D. R. Clarke, Thermal conductivity of single- and multi-phase compositions in the ZrO<sub>2</sub>–Y<sub>2</sub>O<sub>3</sub>–Ta<sub>2</sub>O<sub>5</sub> system, *J. Eur. Ceram. Soc.*, **34**, 3085-3094(2014). DOI: [10.1016/j.jeurceramsoc.2014.03.013](https://doi.org/10.1016/j.jeurceramsoc.2014.03.013).
+4. D. G. Cahill and R. O. Pohl, Lattice vibrations and heat transport in crystals and glasses,  *Annu. Rev. Phys. Chem.*, **39**, 93–121(1988). DOI: [10.1146/annurev.pc.39.100188.000521](https://doi.org/10.1146/annurev.pc.39.100188.000521).
+5. D. G. Cahill, P. V. Braun, G. Chen, D. R. Clarke, S. Fan, K. E. Goodson, P. Keblinski, W. P. King, G. D. Mahan, A. Majumdar, H. J. Maris, S. R. Phillpot, E. Pop and L. Shi, *Appl. Phys. Rev.*, **1**, 011305(2014). DOI: [10.1063/1.4832615](https://doi.org/10.1063/1.4832615).
+6. D. G. Cahill, S. K. Watson, and R. O. Pohl, Lower limit to the thermal conductivity of disordered crystals, *Phys. Rev. B* **46**, 6131(1992). DOI: [10.1103/PhysRevB.46.6131](https://doi.org/10.1103/PhysRevB.46.6131).
+7. G. A. Slack, Nonmetallic crystals with high thermal conductivity, *J. Phys. Chem. Solids*
    **34**, 321–335 (1973). DOI: [10.1016/0022-3697(73)90092-9](https://doi.org/10.1016/0022-3697(73)90092-9).
-7. P. Debye, Zur theorie der spezifischen w&#228;rmen,  *Annalen der Physik* **344**, 789–839 (1912). DOI: [10.1002/andp.19123441404](https://doi.org/10.1002/andp.19123441404).
-8. V. N. Belomestnykh, The acoustical Gr&#252;neisen constants of solids, *Tech. Phys. Lett.* **30**,
+8. P. Debye, Zur theorie der spezifischen w&#228;rmen,  *Annalen der Physik* **344**, 789–839 (1912). DOI: [10.1002/andp.19123441404](https://doi.org/10.1002/andp.19123441404).
+9. V. N. Belomestnykh, The acoustical Gr&#252;neisen constants of solids, *Tech. Phys. Lett.* **30**,
    91–93 (2004). DOI: [10.1134/1.1666949](https://doi.org/10.1134/1.1666949).
+10. Toberer, E. S.; Zevalkink, A.; Snyder, G. J. Phonon engineering through crystal chemistry. *J. Mater. Chem.* **21**, 15843-15852(2011). DOI: [10.1039/c1jm11754h](http://dx.doi.org/10.1039/c1jm11754h).
