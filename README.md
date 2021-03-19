@@ -41,7 +41,7 @@ v<sub>t</sub>=(G/&#961;)<sup>1/2</sup>.
 
 &#954; = A M<sub>avg</sub> &#920;<sub>D</sub><sup>3</sup>&#948; /(&#947;<sup>2</sup>n<sup>2/3</sup>T), 
 
-where **A** is a constant parameter, **M<sub>avg</sub>**  is the mean atomic mass, **&#920;<sub>D</sub>**  is the Debye temperature, **n** and the number of the atoms in the unit cell, **&#948;<sup>3</sup>** is the volume per atom, and **&#947;** is the average Gr&#252;neisen parameter.  The original equation in Ref. [7](https://doi.org/10.1016/0022-3697(73)90092-9) (eq.1 therein) is independent on the parameter **n<sup>2/3</sup>**. The derivation of this equation can be found in Ref. [8](https://doi.org/10.1007/0-387-25100-6_2) (eq. 2.13 therein). The constant parameter **A**<sup>[9](http://dx.doi.org/10.1063/1.1533840)</sup> is approximated to be  3.1 &#8727; 10<sup>-6</sup> when **&#954;** in W/m/K, **M<sub>avg</sub>**  in amu, and **&#948;** in &#197;.
+where **A** is a constant parameter, **M<sub>avg</sub>**  is the mean atomic mass, **&#920;<sub>D</sub>**  is the Debye temperature, **n** is the number of the atoms in the unit cell, **&#948;<sup>3</sup>** is the volume per atom, and **&#947;** is the average Gr&#252;neisen parameter.  The original equation in Ref. [7](https://doi.org/10.1016/0022-3697(73)90092-9) (eq.1 therein) is independent on the parameter **n<sup>2/3</sup>**. The derivation of this equation can be found in Ref. [8](https://doi.org/10.1007/0-387-25100-6_2) (eq. 2.13 therein). The constant parameter **A**<sup>[9](http://dx.doi.org/10.1063/1.1533840)</sup> is approximated to be  3.1 &#8727; 10<sup>-6</sup> when **&#954;** in W/m/K, **M<sub>avg</sub>**  in amu, and **&#948;** in &#197;.
 
 
 
