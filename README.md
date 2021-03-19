@@ -11,13 +11,17 @@ or
 
 &#954;<sub>min</sub>  = 0.87  k<sub>B</sub>(&#937;<sub>avg</sub>)<sup>-2/3</sup>  (E/&#961;)<sup>1/2</sup>,  
 
+or 
+
+&#954;<sub>min</sub>  = 0.87  k<sub>B</sub>(m/&#937;)<sup>2/3</sup>  (E/&#961;)<sup>1/2</sup>,  
+
 where **k<sub>B</sub>** is Boltzmann constant,  **M** and **m** are the molecular mass and the number of the atoms per molecule, respectively, **E** is Young’s modulus, **&#961;** is the density and **N<sub>A</sub>** is Avogadro’s number.
 
-&#937;<sub>avg</sub> = M/(m&#961;N<sub>A</sub>) ,
+&#937;<sub>avg</sub> = M/(m&#961;N<sub>A</sub>) = &#937;/m,
 
 **&#937;<sub>avg</sub>** is the average volume per atom. 
 
-The Eq.(3) in Ref. [3](https://doi.org/10.1016/j.jeurceramsoc.2014.03.013) had messed the definition of **M** and **M**<sub>avg</sub>, and the correct way is to use **M**, rather the **M<sub>avg</sub>** (the mean atomic mass).
+The Eq.(3) in Ref. [3](https://doi.org/10.1016/j.jeurceramsoc.2014.03.013) has messed the definition of **M** and **M**<sub>avg</sub>, and the correct way is to use M, rather the **M<sub>avg</sub>** (the mean atomic mass).
 
 * Cahill–Pohl model<sup>[4](https://doi.org/10.1146/annurev.pc.39.100188.000521),[5](https://doi.org/10.1063/1.4832615),[6](https://doi.org/10.1103/PhysRevB.46.6131)</sup>
 
@@ -33,11 +37,15 @@ v<sub>l</sub>= ((B+4G/3)/&#961;)<sup>1/2</sup>,
 
 v<sub>t</sub>=(G/&#961;)<sup>1/2</sup>.                 
 
-* Slack model<sup>[7](https://doi.org/10.1016/0022-3697(73)90092-9)</sup>
+* Slack model<sup>[7](https://doi.org/10.1016/0022-3697(73)90092-9),[8](https://doi.org/10.1007/0-387-25100-6_2)</sup>
 
-&#954; = 3.1 &#8727; 10<sup>-6</sup> M<sub>avg</sub> &#920;<sub>D</sub><sup>3</sup>&#948; /(&#947;<sup>2</sup>n<sup>2/3</sup>T), 
+&#954; = A M<sub>avg</sub> &#920;<sub>D</sub><sup>3</sup>&#948; /(&#947;<sup>2</sup>n<sup>2/3</sup>T), 
 
-where **M<sub>avg</sub>**  is the mean atomic mass (in amu), **&#920;<sub>D</sub>**  is the Debye temperature (in K), **n** and the number of the atoms in the unit cell, **&#948;<sup>3</sup>** is the volume per atom (in &#197;<sup>3</sup>), and **&#947;** is the average Gr&#252;neisen parameter. The Debye temperature<sup>[8](https://doi.org/10.1002/andp.19123441404)</sup> and Gr&#252;neisen parameter can be evaluated from the sound velocities, which can be measured experimentally, or can be obtained by the theoretically-calculated elastic modulus.
+where **A** is a constant parameter, **M<sub>avg</sub>**  is the mean atomic mass, **&#920;<sub>D</sub>**  is the Debye temperature, **n** and the number of the atoms in the unit cell, **&#948;<sup>3</sup>** is the volume per atom, and **&#947;** is the average Gr&#252;neisen parameter.  The original equation in Ref. [7](https://doi.org/10.1016/0022-3697(73)90092-9) (eq.1 therein) is independent on the parameter **n<sup>2/3</sup>**. The derivation of this equation can be found in Ref. [8](https://doi.org/10.1007/0-387-25100-6_2) (eq. 2.13 therein). The constant parameter **A**<sup>[9](http://dx.doi.org/10.1063/1.1533840)</sup> is approximated to be  3.1 &#8727; 10<sup>-6</sup> when **&#954;** in W/m/K, **M<sub>avg</sub>**  in amu, and **&#948;** in &#197;.
+
+
+
+The Debye temperature<sup>[10](https://doi.org/10.1002/andp.19123441404)</sup> and Gr&#252;neisen parameter can be evaluated from the sound velocities, which can be measured experimentally, or can be obtained by the theoretically-calculated elastic modulus.
 
 &#920;<sub>D</sub> = h/k<sub>B</sub> (3n/(4&#960;&#937;))<sup>1/3</sup>v<sub>a</sub>,  
 
@@ -45,15 +53,21 @@ where **h** and **k<sub>B</sub>** are Planck and Boltzmann constants, respective
 
 v<sub>a</sub> = [(1/3)(1/v<sub>l</sub><sup>3</sup>+2/v<sub>t</sub><sup>3</sup>)]<sup>-1/3</sup>.  
 
-The Gr&#252;neisen parameter **&#947;**  is calculated from the relation proposed by Belomestnykh<sup>[9](https://doi.org/10.1134/1.1666949)</sup>:
+The Gr&#252;neisen parameter **&#947;**  is calculated from the relation proposed by Belomestnykh<sup>[11](https://doi.org/10.1134/1.1666949)</sup>:
 
 &#947; = [9-12(v<sub>t</sub>/v<sub>l</sub>)<sup>2</sup>]/[2+4(v<sub>t</sub>/v<sub>l</sub>)<sup>2</sup>],  
 
 which takes into account the contribution of acoustic sound velocities only.
 
-* Mixed model<sup>[10](http://dx.doi.org/10.1039/c1jm11754h)</sup>
+* Mixed model<sup>[12](http://dx.doi.org/10.1039/c1jm11754h)</sup>
 
-  &#954;<sub>a</sub> = a<sub>1</sub>  &#8727;  M
+&#954;<sub>a</sub> = (6&#960;<sup>2</sup>)<sup>2/3</sup>/(4&#960;<sup>2</sup>) (M<sub>avg</sub>v<sub>a</sub><sup>3</sup>)/(T&#937;<sub>avg</sub><sup>2/3</sup>&#947;<sup>2</sup>) (1/n<sup>1/3</sup>),
+
+&#954;<sub>o</sub> = (3k<sub>B</sub>v<sub>a</sub>)/(2&#937;<sub>avg</sub><sup>2/3</sup>) (&#960;/6)<sup>1/3</sup> (1-1/n<sup>2/3</sup>),
+
+where **M<sub>avg</sub>**  is the mean atomic mass, **v<sub>a</sub>** is the average sound wave velocity, **T** is the temperature, **&#937;<sub>avg</sub>** is the average volume per atom, i.e., **&#937;/n**,  **&#937;** is the cell volume, **n** is the number of atoms in the unit cell, and **&#947;** is the average Gr&#252;neisen parameter, respectively. The **v<sub>a</sub>** and **&#947;** are obtained by the theoretically-calculated elastic modulus, as shown above.
+
+  
 
 
 # Usage
@@ -86,6 +100,35 @@ print(kappa_Slack)
 
 print(kappa_mixed)
 
+```
+    #Fe, Al, Si
+    natoms_list = [6, 4, 6]
+    atomic_weight_list=[55.845, 26.982, 28.086]
+    vol = 196.489731295
+    E = 286.239
+    K = 173.121
+    G = 116.886
+    T = 679.334852747
+
+    print('Clarke model:')
+    kappa_Clarke = thermal_cond_clarke(natoms_list, atomic_weight_list, vol, E)
+    print('Thermal conductivity estimated by Clarke model [W/m/K]: {:15.5f}'.format(kappa_Clarke))
+    print('\n')
+    print('Cahil model')
+    kappa_Cahill = thermal_cond_cahill(natoms_list, atomic_weight_list, vol, K, G)
+    print('Thermal conductivity estimated by Cahill model [W/m/K]: {:15.5f}'.format(kappa_Cahill))
+    print('\n')
+    print('Mixed model')
+    kappa_mixed = thermal_cond_latt_mixed(natoms_list, atomic_weight_list, vol, K, E,G, T)
+    print('Thermal conductivity estimated by mixed model [W/m/K]: {:15.5f}'.format(kappa_mixed))
+    print('\n')
+    print('Slack model:')
+    kappa_Slack = thermal_cond_slack(natoms_list, atomic_weight_list, vol, K, G, T)
+    print('Thermal conductivity estimated by Slack model [W/m/K]: {:15.5f}'.format(kappa_Slack))
+```
+
+
+
 All the calculated thermal conductivities are given in the unit of W m<sup>-1</sup>K<sup>-1</sup>.  Meanwhile, the other physics quantities such as Debye temperature, Gr&#252;neisen parameter, and sound velocities are also printed out. 
 
 We have used the Slack model to estimate of Al<sub>2</sub>Fe<sub>3</sub>Si<sub>3</sub>. If you are interested in it, please refer to our paper:
@@ -104,7 +147,9 @@ We have used the Slack model to estimate of Al<sub>2</sub>Fe<sub>3</sub>Si<sub>3
 6. D. G. Cahill, S. K. Watson, and R. O. Pohl, Lower limit to the thermal conductivity of disordered crystals, *Phys. Rev. B* **46**, 6131(1992). DOI: [10.1103/PhysRevB.46.6131](https://doi.org/10.1103/PhysRevB.46.6131).
 7. G. A. Slack, Nonmetallic crystals with high thermal conductivity, *J. Phys. Chem. Solids*
    **34**, 321–335 (1973). DOI: [10.1016/0022-3697(73)90092-9](https://doi.org/10.1016/0022-3697(73)90092-9).
-8. P. Debye, Zur theorie der spezifischen w&#228;rmen,  *Annalen der Physik* **344**, 789–839 (1912). DOI: [10.1002/andp.19123441404](https://doi.org/10.1002/andp.19123441404).
-9. V. N. Belomestnykh, The acoustical Gr&#252;neisen constants of solids, *Tech. Phys. Lett.* **30**,
-   91–93 (2004). DOI: [10.1134/1.1666949](https://doi.org/10.1134/1.1666949).
-10. Toberer, E. S.; Zevalkink, A.; Snyder, G. J. Phonon engineering through crystal chemistry. *J. Mater. Chem.* **21**, 15843-15852(2011). DOI: [10.1039/c1jm11754h](http://dx.doi.org/10.1039/c1jm11754h).
+8. D. T. Morelli and G. A. Slack, High lattice thermal conductivity solids. In: S. L. Shind&#233; and J. S. Goela, (eds) High thermal conductivity materials. Springer, New York, NY. (2006) DOI: [10.1007/0-387-25100-6_2](https://doi.org/10.1007/0-387-25100-6_2).
+9. D. T. Morelli and J. P. Heremans, Thermal conductivity of germanium, silicon, and carbon nitrides, *Appl. Phys. Lett.* **81**, 5126 (2002). DOI:  [10.1063/1.1533840](http://dx.doi.org/10.1063/1.1533840).
+10. P. Debye, Zur theorie der spezifischen w&#228;rmen,  *Annalen der Physik* **344**, 789–839 (1912). DOI: [10.1002/andp.19123441404](https://doi.org/10.1002/andp.19123441404).
+11. V. N. Belomestnykh, The acoustical Gr&#252;neisen constants of solids, *Tech. Phys. Lett.* **30**,
+    91–93 (2004). DOI: [10.1134/1.1666949](https://doi.org/10.1134/1.1666949).
+12. Toberer, E. S.; Zevalkink, A.; Snyder, G. J. Phonon engineering through crystal chemistry. *J. Mater. Chem.* **21**, 15843-15852(2011). DOI: [10.1039/c1jm11754h](http://dx.doi.org/10.1039/c1jm11754h).
