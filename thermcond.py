@@ -7,7 +7,7 @@ from numpy import math
 
 def molecular_weight(natoms_list, atomic_weight_list):
     #atomic_weight_list in  atomic mass units (u)
-    # 1 u = 1 g/mol/(N_A)
+    # 1 u = 1 g/mol/(N_A) = 1.0/(6.02214085774e+23) g = 1.6605390402231174e-24 g
     mol_weight=0.0
     for i in range(len(natoms_list)):
         mol_weight += natoms_list[i] * atomic_weight_list[i]
@@ -38,6 +38,50 @@ def mass_density(natoms_list, atomic_weight_list, vol):
     print('Density [kg/m^3]:{:12.5f}'.format(rho))
     return rho
 
+def sound_velocities(natoms_list, atomic_weight_list, vol, K, E, G):
+    #K, E, and G---> Bulk, Young's, and shear modulus, in GPa
+    # volume in unit of angstrom^{-3}.
+    # Planck constant: (J.s)
+    h = 6.62607004e-34
+    #Boltzmann constant (J/K = W*s/K)
+    kb = 1.38064852e-23
+    # 1GPa = 10^9 N/m^2 = 10^9 kg/(m*s^2).
+    GPa2SI = 1.0e9
+    K = K*GPa2SI
+    G = G*GPa2SI
+    E = E*GPa2SI
+    rho = mass_density(natoms_list, atomic_weight_list, vol)
+    v_l = np.sqrt((K+4.0*G/3.0)/rho)
+    v_t = np.sqrt(G/rho)
+    v_a = ((1.0/3.0)*(v_l**(-3.0)+2.0*v_t**(-3.0)))**(-1.0/3.0)
+    v_s = np.sqrt(E/rho)
+    print('Longitudinal sound velocity estimated from bulk and shear moduli [m/s]:{:12.5f}'.format(v_l))
+    print('Transverse sound velocity estimated from shear modulus [m/s]:{:12.5f}'.format(v_t))
+    print('Averaged sound velocity estimated from bulk and shear moduli [m/s]:{:12.5f}'.format(v_a))
+    print("Velocity estimated from Young's modulus [m/s]:{:12.5f}".format(v_s))
+    return v_l, v_t, v_a, v_s
+
+def Gruneisen_param(v_l, v_t):
+    x = v_t/v_l
+    gamma = (9.0-12.0*x**2)/(2.0+4.0*x**2)
+    return gamma
+
+def cal_modulus(v_l, v_t, rho):
+    ## v_l and v_t: longitudinal and transverse velocities of sound, in m/s
+    ## rho: in kg/m^3
+    # 1GPa = 10^9 N/m^2 = 10^9 kg/(m*s^2).
+    GPa2SI = 1.0e9
+    B = rho*(v_l**2 - 4.0/3.0 * v_t**2)/GPa2SI
+    G = rho*v_t**2/GPa2SI
+    # G, B in GPa
+    E = rho*v_t**2*(3.0*v_l**2 -
+         4.0*v_t**2)/(v_l**2-v_t**2)*1.0/GPa2SI
+    #E2 = 9 *B*G/(3.0*B+G)
+    #print(E, E2)
+    nu = (3.0*B-2.0*G)/(6.0*B+2.0*G)
+    #B, G, and E: bulk, shear, and Young's moduli, in GPa
+    return B, G, E, nu
+
 def thermal_cond_clarke(natoms_list, atomic_weight_list, vol, E):
     #Boltzmann constant (J/K = W*s/K)
     kb = 1.3806485279e-23
@@ -52,8 +96,11 @@ def thermal_cond_clarke(natoms_list, atomic_weight_list, vol, E):
     v_s = np.sqrt(E/rho)
     print("Velocity estimated from Young's modulus [m/s]:{:12.5f}".format(v_s))
     natoms = sum(natoms_list)
+    #molecular weight in (u)
     molw = molecular_weight(natoms_list, atomic_weight_list)
-    kappa_clarke = 0.87 * kb * (NA*natoms*rho/molw)**(2.0/3.0) * v_s
+    #rho in kg/m^3
+    ## 1000.0--> 1kg = 1000 g
+    kappa_clarke = 0.87 * kb * (1000.0*NA*natoms*rho/molw)**(2.0/3.0) * v_s
     # in unit of W/(m.K)
     return kappa_clarke
 
@@ -70,37 +117,41 @@ def thermal_cond_cahill(natoms_list, atomic_weight_list, vol, K, G):
     v_t = np.sqrt(G/rho)
     natoms = sum(natoms_list)
     n = float(natoms)/(vol*1.0e-30)
-    print('Longitudinal sound velocity estimated from bulk and shear moduli [m/s]:{:12.5f}'.format(v_l))
-    print('Transverse sound velocity estimated from shear modulus [m/s]:{:12.5f}'.format(v_t))
     #kappa_cahill = 1.0/2.48 * kb *n**(2.0/3.0)*(v_l+v_t)
     kappa_cahill = 0.5*(np.pi/6.0)**(1.0/3.0)*kb*n**(2.0/3.0)*(v_l+v_t)
     return kappa_cahill
 
-def thermal_cond_latt_mixed(natoms_list, atomic_weight_list, vol, K):
+def thermal_cond_latt_mixed(natoms_list, atomic_weight_list, vol, K, E,G, t):
     #Boltzmann constant (J/K = W*s/K)
     kb = 1.3806485279e-23
     #Avogadro's number
-    NA = 6.02214085774e+23
+    #NA = 6.02214085774e+23
     ang2m = 1.0e-10
     # 1GPa = 10^9 N/m^2 = 10^9 kg/(m*s^2).
-    GPa2SI = 1.0e9
-    K = K*GPa2SI
-    a1 = 2.7e-4
-    a2 = 1.5e-23
+    #GPa2SI = 1.0e9
+    #E = E*GPa2SI
     rho = mass_density(natoms_list, atomic_weight_list, vol)
-    v_s = np.sqrt(K/rho)
-    print('Speed of sound estimated from bulk modulus [m/s]:{:12.5f}'.format(v_s))
+    #v_s = np.sqrt(E/rho)
+    #print("Speed of sound estimated from Young's modulus [m/s]:{:12.5f}".format(v_s))
+    v_l, v_t, v_a, v_s = sound_velocities(natoms_list, atomic_weight_list, vol, K, E, G)
+    gamma = Gruneisen_param(v_l, v_t)
     mass_in_kg = mass(natoms_list, atomic_weight_list)
     natoms = sum(natoms_list)
     mean_mass = mass_in_kg/float(natoms)
-    print(mean_mass)
     vol = vol*ang2m**3
-    print('vol:{:12.5e}'.format(vol))
+    print('Volume [m^3]:{:12.5e}'.format(vol))
     mean_vol = vol/float(natoms)
-    print('mean_vol:{:12.5e}'.format(mean_vol))
-    print(a1, mean_vol, mean_vol**(2.0/3.0), natoms**(1.0/3.0))
-    kappa_ac = a1*mean_mass*v_s**3/(mean_vol**(2.0/3.0)*natoms**(1.0/3.0))
-    kappa_op = a2*v_s*mean_vol**(-2.0/3.0)*(1.0-float(natoms)**(-2.0/3.0))
+    print('Mean_volume [m^3/atom]:{:12.5e}'.format(mean_vol))
+    # Taken from some reference
+    #a1 = 2.7e-4
+    #a2 = 1.5e-23
+    ##Following Ref: E. S. Toberer, et al, J. Mater. Chem., (2011), 21 , 15843
+    a1 = (6*np.pi**2)**(2.0/3.0)*0.25*np.pi**(-2)
+    a2 = 3.0/2.0*kb*(np.pi/6.0)*(1.0/3.0)
+    #print(a1, mean_vol, mean_vol**(2.0/3.0), natoms**(1.0/3.0))
+    kappa_ac = a1*mean_mass*v_a**3/(mean_vol**(2.0/3.0)*natoms**(1.0/3.0))/(t*gamma**2)
+    kappa_op = a2*v_a*mean_vol**(-2.0/3.0)*(1.0-float(natoms)**(-2.0/3.0))
+
     print('Lattice thermal conducivity contribued by acoustic phonons:{:12.5f}'.format(
           kappa_ac))
     print('Lattice thermal conducivity contribued by optical phonons:{:12.5f}'.format(
@@ -112,6 +163,7 @@ def thermal_cond_latt_mixed(natoms_list, atomic_weight_list, vol, K):
     kappa_lat = kappa_ac + kappa_op
 
     return kappa_lat
+
 
 def thermal_cond_slack(natoms_list, atomic_weight_list, vol, K, G, t):
     # volume in unit of angstrom^{-3}.
@@ -129,9 +181,9 @@ def thermal_cond_slack(natoms_list, atomic_weight_list, vol, K, G, t):
     v_a = ((1.0/3.0)*(v_l**(-3.0)+2.0*v_t**(-3.0)))**(-1.0/3.0)
     x = v_t/v_l
     gamma = (9.0-12.0*x**2)/(2.0+4.0*x**2)
-    print('gamma:{:12.5f}'.format(gamma))
+    #print('gamma:{:12.5f}'.format(gamma))
     natoms = sum(natoms_list)
-    n = float(natoms)/(vol*1.0e-30)
+    #n = float(natoms)/(vol*1.0e-30)
     t_Debye = h/kb*(3.0*natoms/(4.0*np.pi*vol*1.0e-30))**(1.0/3.0)*v_a
     print('Longitudinal sound velocity estimated from bulk and shear moduli [m/s]:{:12.5f}'.format(v_l))
     print('Transverse sound velocity estimated from shear modulus [m/s]:{:12.5f}'.format(v_t))
@@ -162,21 +214,6 @@ def calc_volume_trilinic(a, b, c, alpha, beta, gamma):
     vol = a*b*c*math.sqrt(1.0+2*ca*cb*cg-ca**2-cb**2-cg**2)
     return vol
 
-def cal_modulus(v_l, v_t, rho):
-    ## v_t: transverse velocity, in m/s
-    ## rho: in kg/m^3
-    # 1GPa = 10^9 N/m^2 = 10^9 kg/(m*s^2).
-    GPa2SI = 1.0e9
-    B = rho*(v_l**2 - 4.0/3.0 * v_t**2)/GPa2SI
-    G = rho*v_t**2/GPa2SI
-    # G, B in GPa
-    E = rho*v_t**2*(3.0*v_l**2 -
-         4.0*v_t**2)/(v_l**2-v_t**2)*1.0/GPa2SI
-    #E2 = 9 *B*G/(3.0*B+G)
-    #print(E, E2)
-    nu = (3.0*B-2.0*G)/(6.0*B+2.0*G)
-    return B, G, E, nu
-
 
 if __name__ == "__main__":
     a = [6, 4, 6]
@@ -197,16 +234,20 @@ if __name__ == "__main__":
     """
 
     print('Clarke model:')
-    print(thermal_cond_clarke(a, am, vol, E))
+    kappa_Clarke = thermal_cond_clarke(a, am, vol, E)
+    print('Thermal conductivity estimated by Clarke model [W/m/K]: {:15.5f}'.format(kappa_Clarke))
     print('\n')
     print('Cahil model')
-    print(thermal_cond_cahill(a, am, vol, K, G))
+    kappa_Cahill = thermal_cond_cahill(a, am, vol, K, G)
+    print('Thermal conductivity estimated by Cahill model [W/m/K]: {:15.5f}'.format(kappa_Cahill))
     print('\n')
     print('Mixed model')
-    print(thermal_cond_latt_mixed(a, am, vol,  K))
+    kappa_mixed = thermal_cond_latt_mixed(a, am, vol, K, E,G, T)
+    print('Thermal conductivity estimated by mixed model [W/m/K]: {:15.5f}'.format(kappa_mixed))
     print('\n')
     print('Slack model:')
-    print(thermal_cond_slack(a, am, vol, K, G, T))
+    kappa_Slack = thermal_cond_slack(a, am, vol, K, G, T)
+    print('Thermal conductivity estimated by Slack model [W/m/K]: {:15.5f}'.format(kappa_Slack))
 
     """
     print('experiment: x=0\n')
@@ -221,7 +262,6 @@ if __name__ == "__main__":
     print('\n')
     print('Slack model:')
     print(thermal_cond_slack(a, am, vol, K, G, T))
-    """
 
     bka=[1, 1, 3]
     bkm=[39.098, 180.948, 15.999]
@@ -229,7 +269,7 @@ if __name__ == "__main__":
     vka=3.988**3
     #print vka
     #print thermal_cond_latt_mixed(bka, bkm, vka,  kka)
-    
+
     #BiCuSeO
     ccu=[2, 2 , 2, 2]
     cmcu=[63.546, 208.9804, 78.96, 15.999]
@@ -240,7 +280,7 @@ if __name__ == "__main__":
     #Ecu=94.02
     #Kcu=89.32
     #Gcu=35.49
-    """
+
     Ecu=89.60
     Kcu=84.80
     Gcu=33.84
